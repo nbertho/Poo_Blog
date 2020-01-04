@@ -1,23 +1,27 @@
 <?php
 /*
   ./app/routeurs/posts.php
-  ROUTE DES USERS ($_GET['users'])
+  ROUTE DES POSTS ($_GET['post'])
  */
 
 switch ($_GET['post']) {
+
   case 'show':
-  // SHOW ALL POSTS
-      include_once '../app/controleurs/postsControleur.php';
-      \App\Controleurs\PostsControleur\showAction($connexion, $_GET['id']);
-      break;
+    // SHOW ALL POSTS
+    $postCtrl = new App\Controleurs\PostsControleur();
+    $postCtrl->showAction($connexion, $_GET['id']);
+  break;
+
   case 'show-more':
     // RECHERCHE DE POSTS
-      include_once '../app/controleurs/postsControleur.php';
-      \App\Controleurs\PostsControleur\indexShowMoreAction($connexion, $_POST['offset']);
-      break;
+    $postCtrl = new App\Controleurs\PostsControleur();
+    $postCtrl->indexShowMoreAction($connexion, $_POST['offset']);
+  break;
+
   case 'search':
     // RECHERCHE DE POSTS
-      include_once '../app/controleurs/postsControleur.php';
-      \App\Controleurs\PostsControleur\searchAction($connexion, $_POST['search']);
-      break;
-  }
+    $postCtrl = new App\Controleurs\PostsControleur();
+    $postCtrl->searchAction($connexion, $_POST['search']);
+  break;
+
+}

@@ -5,14 +5,17 @@
  */
 
 switch ($_GET['users']) {
+
   case 'loginForm':
-  // FORMULAIRE DE CONNEXION AU BACKOFFICE
-      include_once '../app/controleurs/usersControleur.php';
-      \App\Controleurs\UsersControleur\loginFormAction();
-      break;
+    // FORMULAIRE DE CONNEXION AU BACKOFFICE
+    $userCtrl = new App\Controleurs\UsersControleur();
+    $userCtrl->loginFormAction();
+  break;
+
   case 'loginVerification':
     // TRAITEMENT DU FORMULAIRE DE CONNEXION AU BACKOFFICE
-      include_once '../app/controleurs/usersControleur.php';
-      \App\Controleurs\UsersControleur\loginVerificationAction($connexion, ['login' => $_POST['login'], 'pwd' => $_POST['pwd']]);
-      break;
-  }
+    $userCtrl = new App\Controleurs\UsersControleur();
+    $userCtrl->loginVerificationAction($connexion, ['login' => $_POST['login'], 'pwd' => $_POST['pwd']]);
+  break;
+
+}

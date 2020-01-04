@@ -9,8 +9,9 @@
     <!-- Blog Search Well -->
     <h4>Categories</h4>
     <ul class="collection">
-      <?php   include_once '../app/controleurs/categoriesControleur.php';
-              \App\Controleurs\CategoriesControleur\indexAction($connexion);
+      <?php
+        $categorieCtrl = new App\Controleurs\CategoriesControleur();
+        $categorieCtrl->indexAction($connexion);
        ?>
     </ul>
     <br/>
