@@ -1,0 +1,47 @@
+#--------------------------------------------------
+# Répertoire : /
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+  Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+  RewriteEngine on
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+  #SHOW POSTS
+    RewriteRule ^posts\/index$ index.php?post=index [L]
+
+  #SHOW ADD POSTS
+    RewriteRule ^posts\/add\/form$ index.php?post=add-form [L]
+
+  #ADD POSTS
+    RewriteRule ^posts\/add\/insert$ index.php?post=add-insert [L]
+
+  #DELETE POST
+    RewriteRule ^posts\/[1-9][0-9]*\/delete$ index.php?post=delete&id=$1 [L]
+
+##################################################################################
+
+  #SHOW CATEGORIES
+    RewriteRule ^categories\/index$ index.php?categories=index [L]
+
+  #SHOW ADD CATEGORIE
+    RewriteRule ^categories\/add\/index$ index.php?categories=add-index
+
+  #ADD CATEGORIE
+    RewriteRule ^categories\/add\/insert$ index.php?categories=add-insert
+
+##################################################################################
+
+  # SHOW AUTEURS
+    RewriteRule ^auteurs\/index$ index.php?auteurs=index [L]
+
+  #LOGOUT BACKOFFICE
+    RewriteRule ^users\/logout$ index.php?users=logout [L]
+# --------------------------------------------------
+  RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+  RewriteRule ^(.*)$ index.php [L]
